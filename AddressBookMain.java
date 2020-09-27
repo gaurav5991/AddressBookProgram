@@ -18,7 +18,9 @@ public class AddressBookMain
 			
 			System.out.println("2.Edit Contact");
 			
-			System.out.println("3.Exit");
+			System.out.println("3.Delete Contact");
+			
+			System.out.println("4.Exit");
 
 			System.out.println("Enter Choice: ");
 				
@@ -74,14 +76,32 @@ public class AddressBookMain
 					}
 						
 					break;
-				}	
+				}
 				case 3:
+					{
+						System.out.println("Enter the Contact to be deleted:");
+						String Name = sc.next();
+						
+						boolean b = addressBookObj.deleteContact(Name);
+						if(b == true)
+						{
+							System.out.println("Details Deleted");
+						}
+						else
+						{
+							System.out.println("Contact Not Found");
+						}
+						break;
+					}
+
+	
+				case 4:
 				{
 					System.exit(0);
 					break;
 				}
 			}
-		}while(option!=3);
+		}while(option!=4);
 		
 		sc.close();	
 	}		
