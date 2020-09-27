@@ -12,78 +12,86 @@ public class AddressBookMain
 		
 		int option;
 			
-		do
-		{
-			System.out.println("1.Add Contact");
-			
-			System.out.println("2.Edit Contact");
-			
-			System.out.println("3.Delete Contact");
-			
-			System.out.println("4.Exit");
-
-			System.out.println("Enter Choice: ");
-				
-			option =sc.nextInt();
-				
-			switch(option)
+			do
 			{
-				case 1:
-				{
-					System.out.println("Enter First Name: ");
-					String firstname = sc.next();
-							
-					System.out.println("Enter last name: ");
-					String lastname = sc.next();
-							
-					System.out.println("Enter Address: ");
-					String address = sc.next();
-							
-					sc.nextLine();
-							
-					System.out.println("Enter City: ");
-					String city = sc.next();
-							
-					System.out.println("Enter State: ");
-					String state =sc.next();
-							
-					System.out.println("Enter Zip Code: ");
-					int zip = sc.nextInt();
-							
-					System.out.println("Enter Phone Number:");
-					long phonenumber = sc.nextLong();
-						
-					Contact contact_Obj = new Contact(firstname, lastname, address, city, state, zip, phonenumber);
-							
-					addressBookObj.addContact(contact_Obj);
-							
-					break;
+				System.out.println("1.Add Contact");
+
+				System.out.println("2.Edit Contact");
+
+				System.out.println("3.Delete Contact");
+								
+				System.out.println("4.Exit");
+
+				System.out.println("Enter Choice: ");
 				
-				}
-				case 2:
+				option =sc.nextInt();
+				
+				switch(option)
 				{
-					System.out.println("Enter the Person First name to edit his/her details: ");
-					String person_name = sc.next();
-						
-					boolean b = addressBookObj.editContact(person_name);
-					if(b == true)
+					case 1:
 					{
-						System.out.println("Details Updated");
-					}
-					else
-					{
-						System.out.println("Contact Not Found");
-					}
+						System.out.println("Enter Number of Contacts to be added: ");
+						int number_of_contacts = sc.nextInt();
 						
-					break;
-				}
-				case 3:
+						for(int j=1;j<=number_of_contacts;j++)
+						{
+							System.out.println("Enter First Name: ");
+							String firstname = sc.next();
+							
+							System.out.println("Enter last name: ");
+							String lastname = sc.next();
+							
+							System.out.println("Enter Address: ");
+							String address = sc.next();
+							
+							sc.nextLine();
+							
+							System.out.println("Enter City: ");
+							String city = sc.next();
+							
+							System.out.println("Enter State: ");
+							String state =sc.next();
+							
+							System.out.println("Enter Zip Code: ");
+							int zip = sc.nextInt();
+							
+							System.out.println("Enter Phone Number:");
+							long phonenumber = sc.nextLong();
+						
+							Contact contact_Obj = new Contact(firstname, lastname, address, city, state, zip, phonenumber);
+							
+							addressBookObj.addContact(contact_Obj);
+													
+						}
+						System.out.println("Contacts Added Successfully");
+						
+						break;
+				
+					}
+					case 2:
+					{
+						System.out.println("Enter the Person First name to edit details: ");
+						String person_name = sc.next();
+						
+						boolean b = addressBookObj.editContact(person_name);
+						if(b == true)
+						{
+							System.out.println("Details Updated");
+						}
+						else
+						{
+							System.out.println("Contact Not Found");
+						}
+						
+						break;
+					}
+					case 3:
 					{
 						System.out.println("Enter the Contact to be deleted:");
 						String Name = sc.next();
 						
-						boolean b = addressBookObj.deleteContact(Name);
-						if(b == true)
+						boolean b1 = addressBookObj.deleteContact(Name);
+						if(b1 == true)
 						{
 							System.out.println("Details Deleted");
 						}
@@ -93,16 +101,17 @@ public class AddressBookMain
 						}
 						break;
 					}
-
-	
-				case 4:
-				{
-					System.exit(0);
-					break;
+					case 4:
+					{
+						System.exit(0);
+						break;
+					}
 				}
-			}
-		}while(option!=4);
+			}while(option!=4);
 		
-		sc.close();	
-	}		
+			sc.close();
+		
+		
+		}
+		
 }
