@@ -103,4 +103,21 @@ public class AddressBook
 		else
 			return false;
 	}
+	public boolean deleteContact(String Name)
+	{
+		int flag = 0;
+		for(Contact contact: contact_list)
+		{
+			if(contact.getFirst_name().equals(Name))
+			{
+				contact_list.remove(contact);
+				flag = 1;
+				break;
+			}
+		}
+		if(flag==1)
+			return true;
+		else
+			return false;
+	}
 }
