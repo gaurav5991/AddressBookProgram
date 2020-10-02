@@ -26,7 +26,11 @@ public class AddressBookMain
 
 			System.out.println("5.Search Contact by city Using City and Person Dictionary");
 
-			System.out.println("6.Exit");
+			System.out.println("6.Count Contact By State");
+
+			System.out.println("7.Count Contact By City");
+
+			System.out.println("8.Exit");
 
 			System.out.println("Enter Choice: ");
 
@@ -69,7 +73,19 @@ public class AddressBookMain
 					AddBookMain.searchPersonByCityUsinghashmap(CityName);
 					break;
 				}
-				case 6:{
+				case 6: {
+					System.out.println("Enter Name of State: ");
+					String StateName = sc.next();
+					AddBookMain.CountByState(StateName);
+					break;
+				}
+				case 7:{
+					System.out.println("Enter Name of City: ");
+					String CityName = sc.next();
+					AddBookMain.CountByCity(CityName);
+					break;
+				}
+				case 8:{
 					break;
 				}
 			}
@@ -194,5 +210,38 @@ public class AddressBookMain
 		System.out.println("Zip Code: "+contact.getZip_code());
 		System.out.println("Phone Number: "+contact.getPhone_number());
 		System.out.println("Email: "+contact.getEmail());
+	}
+	public void CountByState(String state) {
+		int count = 0;
+		for(Map.Entry<String, AddressBook> entry: addressBookMap.entrySet()){
+			for(int i=0;i<(entry.getValue()).contact_list.size();i++)
+			{
+				Contact contact= entry.getValue().contact_list.get(i);
+
+				if(state.equals(contact.getState()))
+				{
+					count++;
+				}
+
+			}
+		}
+		System.out.println("Total Person Count in state: "+state+": "+count);
+	}
+	public void CountByCity(String city) {
+		int count=0;
+		for(Map.Entry<String, AddressBook> entry: addressBookMap.entrySet())
+		{
+			for(int i=0;i<(entry.getValue()).contact_list.size();i++)
+			{
+				Contact d= (Contact)entry.getValue().contact_list.get(i);
+
+				if(city.equals(d.getCity()))
+				{
+					count++;
+				}
+
+			}
+		}
+		System.out.println("Total number of people in this city: "+city+": "+count);
 	}
 }
