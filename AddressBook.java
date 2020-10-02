@@ -21,6 +21,13 @@ public class AddressBook
 		System.out.println("Enter First Name: ");
 		String firstname = sc.next();
 
+		for (Contact contact:contact_list) {
+			if(contact.getFirst_name().equals(firstname)){
+				System.out.println("The person with this name Already exists");
+				return;
+			}
+		}
+
 		System.out.println("Enter last name: ");
 		String lastname = sc.next();
 
@@ -148,5 +155,4 @@ public class AddressBook
 		else
 			return false;
 	}
-
 }
