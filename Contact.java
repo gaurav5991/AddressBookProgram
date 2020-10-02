@@ -1,7 +1,7 @@
 public class Contact 
 {
-	private String first_name, last_name, address, city, state; 
-	private int zip_code; 
+	private String first_name, last_name, address, city, state,email;
+	private int zip_code;
 	private long phone_number;
 	
 	/* setter Methods*/
@@ -29,7 +29,9 @@ public class Contact
 	public void setZip_code(int zip_code) {
 		this.zip_code = zip_code;
 	}
-	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	/* getter Method */
 	
 	public String getFirst_name() {
@@ -53,10 +55,13 @@ public class Contact
 	public long getPhone_number() {
 		return phone_number;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+
 	/*Parameterized Constructor*/
 	
-	public Contact(String first_name, String last_name, String address, String city, String state, int zip_code, long phone_number) 
+	public Contact(String first_name, String last_name, String address, String city, String state, int zip_code, long phone_number,String email)
 	{
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -65,5 +70,6 @@ public class Contact
 		this.state = state;
 		this.zip_code = zip_code;
 		this.phone_number = phone_number;
+		this.email = email;
 	}
 }
