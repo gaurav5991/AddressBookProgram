@@ -8,6 +8,10 @@ public class AddressBook
 
 	ArrayList<Contact> contact_list = new ArrayList<Contact>();
 
+	public Map<String,Contact> ContactByState;
+	public Map<String,Contact> ContactByCity;
+
+
 	public void setList(ArrayList<Contact> list) 
 	{
 		this.contact_list = contact_list;
@@ -54,6 +58,10 @@ public class AddressBook
 		Contact contact_Obj = new Contact(firstname,lastname,address,city,state,zip,phonenumber,email);
 
 		contact_list.add(contact_Obj);
+
+		ContactByState.put(state,contact_Obj);
+		ContactByCity.put(city,contact_Obj);
+
 
 	}
 	public boolean editContact(String Name)
@@ -155,4 +163,5 @@ public class AddressBook
 		else
 			return false;
 	}
+
 }

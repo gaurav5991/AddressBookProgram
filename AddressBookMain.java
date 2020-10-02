@@ -6,13 +6,13 @@ public class AddressBookMain
 {
 	static Scanner sc = new Scanner(System.in);
 	public static Map<String, AddressBook> addressBookMap;
-
+	static AddressBook AddBookObj = new AddressBook();
 	public AddressBookMain() {
 		addressBookMap = new HashMap<>();
 	}
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program");
-
+		AddressBook obj = new AddressBook();
 		AddressBookMain AddBookMain = new AddressBookMain();
 		boolean bool = true;
 		while(bool){
@@ -22,7 +22,11 @@ public class AddressBookMain
 
 			System.out.println("3.Search Contact by city");
 
-			System.out.println("4.Exit");
+			System.out.println("4.Search contact By State Using State and Person  Dictionary");
+
+			System.out.println("5.Search Contact by city Using City and Person Dictionary");
+
+			System.out.println("6.Exit");
 
 			System.out.println("Enter Choice: ");
 
@@ -54,13 +58,25 @@ public class AddressBookMain
 					break;
 				}
 				case 4:{
+					System.out.println("Enter Name of State: ");
+					String StateName = sc.next();
+					AddBookMain.searchPersonByStateUsinHashMap(StateName);
+					break;
+				}
+				case 5: {
+					System.out.println("Enter Name of City: ");
+					String CityName = sc.next();
+					AddBookMain.searchPersonByCityUsinghashmap(CityName);
+					break;
+				}
+				case 6:{
 					break;
 				}
 			}
 		}
 	}
 	public void  addAddressBook(String addressBookName){
-		AddressBook AddBookObj = new AddressBook();
+
 		boolean flag = true;
 		while(flag){
 			System.out.println("1.Add Contact");
@@ -154,5 +170,29 @@ public class AddressBookMain
 				}
 			}
 		}
+	}
+
+	public void searchPersonByStateUsinHashMap(String state_name){
+		Contact contact = AddBookObj.ContactByState.get(state_name);
+		System.out.println("First Name: "+contact.getFirst_name());
+		System.out.println("Last Name: "+contact.getLast_name());
+		System.out.println("Address: "+contact.getAddress());
+		System.out.println("City: "+contact.getCity());
+		System.out.println("State: "+contact.getState());
+		System.out.println("Zip Code: "+contact.getZip_code());
+		System.out.println("Phone Number: "+contact.getPhone_number());
+		System.out.println("Email: "+contact.getEmail());
+	}
+
+	public void searchPersonByCityUsinghashmap(String City){
+		Contact contact = AddBookObj.ContactByCity.get(City);
+		System.out.println("First Name: "+contact.getFirst_name());
+		System.out.println("Last Name: "+contact.getLast_name());
+		System.out.println("Address: "+contact.getAddress());
+		System.out.println("City: "+contact.getCity());
+		System.out.println("State: "+contact.getState());
+		System.out.println("Zip Code: "+contact.getZip_code());
+		System.out.println("Phone Number: "+contact.getPhone_number());
+		System.out.println("Email: "+contact.getEmail());
 	}
 }
